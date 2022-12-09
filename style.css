@@ -15,7 +15,7 @@ body {
 .navigation {
     position: fixed;
     top: 20px;
-    right: 20px;
+    left: 20px;
     height: 16px;
     width: 200px;
     z-index: 100;
@@ -31,16 +31,18 @@ body {
     cursor: pointer;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: flex-start;
     color: #ff0059;
     font-weight: bold;
     font-size: large;
+    letter-spacing: 1.5px;
     padding: 5px 15px;
+    border-radius: 4px 4px 0 0;
 }
 
 .toggle::before {
     content: 'Menu';
-    margin-right: 12px;
+    margin-right: 90px;
 }
 
 .toggle.active::before {
@@ -51,13 +53,13 @@ body {
     position: relative;
     width: 20px;
     height: 50px;
+    left: 0;
 }
 
 .toggle span::before {
     content: '';
     position: absolute;
     top: 20px;
-    left: 0;
     width: 100%;
     height: 2.5px;
     background-color: #ff0059;
@@ -83,4 +85,44 @@ body {
 .toggle.active span::after {
     transform: rotate(135deg);
     bottom: 24px;
+}
+ul{
+ position: relative;
+ list-style: none;
+ display: flex;
+ flex-direction: column;   
+}
+ul li{
+    position: relative;
+    list-style: none;
+    transition: 0.5s;
+    visibility: hidden;
+    opacity: 0;
+    transform: translate( 250px);
+    transition-delay: calc(0.1s * var(--i));
+}
+.navigation.active ul li{
+    visibility: visible;
+    background-color: black;
+    opacity: 1;
+    transform: translate(0px);
+}
+li:last-child {
+    border-radius: 0 0 4px 4px;
+}
+ul li a{
+    position:relative;
+    text-decoration: none;
+    display: block;
+    padding: 10px 16px;
+    height: 50px;
+    color: #fff;
+    transition: 0.2s;
+}
+ul :is(li,a):hover{
+    color: #ff2471;
+    font-weight: 600;
+    font-size: large;
+    letter-spacing: 0.4px;
+    transition: 0.2s;
 }
